@@ -1,0 +1,7 @@
+{
+    "name": "color",
+    "version": "0.0.1",
+    "author": "Andrew Faulks <aj.faulks@gmail.com>",
+    "license": "MIT",
+    "description": "Spark Color library for color representation and conversion."
+}
