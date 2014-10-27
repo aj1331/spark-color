@@ -24,11 +24,11 @@ void Color::Rgb::toHsv(Color::Hsv& hsv)
     }
 
     if (max == r)
-        hsv.h = (g - b) * (Color::Hsv::H_MAX / 6) / delta;
+        hsv.h = ((g - b) / delta) * (Color::Hsv::H_MAX / 6);
     else if (max == g)
-        hsv.h = (b - r) * (Color::Hsv::H_MAX / 6) / delta + (2 * Color::Hsv::H_MAX / 6);
+        hsv.h = ((b - r) / delta + 2) * (Color::Hsv::H_MAX / 6);
     else
-        hsv.h = (r - g) * (Color::Hsv::H_MAX / 6) / delta + (Color::Hsv::H_MAX / 6);
+        hsv.h = ((r - g) / delta + 4) * (Color::Hsv::H_MAX / 6);
 	
 	hsv.s = delta * Color::Hsv::S_MAX / max;
 }
