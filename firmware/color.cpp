@@ -12,7 +12,7 @@ void Color::Rgb::toHsv(Color::Hsv& hsv)
     
 	uint8_t min = min(r, min(g, b));
     uint8_t max = max(r, max(g, b));
-	uint8_t delta = max - min;
+	float delta = max - min;
 
     hsv.v = max;
 
@@ -24,11 +24,11 @@ void Color::Rgb::toHsv(Color::Hsv& hsv)
     }
 
     if (max == r)
-        hsv.h = ((g - b) / delta) * (Color::Hsv::H_MAX / 6);
+        hsv.h = ((g - b) / delta) * (Color::Hsv::H_MAX / 6.0);
     else if (max == g)
-        hsv.h = ((b - r) / delta + 2) * (Color::Hsv::H_MAX / 6);
+        hsv.h = ((b - r) / delta + 2) * (Color::Hsv::H_MAX / 6.0);
     else
-        hsv.h = ((r - g) / delta + 4) * (Color::Hsv::H_MAX / 6);
+        hsv.h = ((r - g) / delta + 4) * (Color::Hsv::H_MAX / 6.0);
 	
 	hsv.s = delta * Color::Hsv::S_MAX / max;
 }
@@ -44,7 +44,7 @@ Color::Hsv Color::Rgb::toHsv()
 void Color::Hsv::toRgb(Color::Rgb& rgb)
 {
 	float h = this->h / (Color::Hsv::H_MAX / 6.0);
-	float s = this->s / Color::Hsv::S_MAX;
+	float s = this->s / (float)Color::Hsv::S_MAX;
 	float v = this->v;
 
 	uint16_t i = int(h);
